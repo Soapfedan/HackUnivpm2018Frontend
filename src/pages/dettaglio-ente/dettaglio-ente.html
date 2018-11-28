@@ -1,0 +1,54 @@
+<!--
+  Generated template for the DettaglioEntePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Dettaglio Ente</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-grid no-lines>
+    <ion-row responsive-sm>
+
+       <!--  <button ion-button>Crea Preventivo</button> -->
+        <ng-container *ngIf="!noLink">
+            
+            <ion-col col-6>
+                <a target="_blank" [attr.href]="schedaClienteDoc">
+                <div block class="square">
+                  <ion-icon class="icon-view-requests" name="text"></ion-icon>
+                  <h3>Scheda</h3>
+                  <h3>Cliente</h3>
+                  <!-- <a ion-button target="_blank" [attr.href]="schedaClienteDoc">Scheda Cliente</a> -->
+                </div>     
+              </a>             
+            </ion-col>
+          
+        </ng-container>
+   <!--      <ng-container *ngIf="noLink">
+            <a ion-button>Scheda Cliente</a>
+          </ng-container> -->
+          <ion-col col-6>
+              <div block class="square" (click)="goToPraticheEnte()">
+                <ion-icon class="icon-view-requests" name="text"></ion-icon>
+                <h3>Lista</h3>
+                <h3>Pratiche</h3>
+              </div>                  
+          </ion-col>
+        <!-- <button ion-button (click)="goToPraticheEnte()">Lista Pratiche</button> -->
+    </ion-row>
+  </ion-grid>
+
+  
+
+    <dynamic *ngIf="content != undefined" [content]="content"></dynamic>
+
+</ion-content>

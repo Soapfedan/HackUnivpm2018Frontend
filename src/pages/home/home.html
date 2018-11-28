@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-navbar>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="goToAlert()">
+        <ion-icon name="notifications" class="large-icon"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+<ion-content class="home-content">
+
+  <div class="home-button-background">
+
+    <div class="home-section section-buttons-create">
+
+        <div class="whois">Benvenuto, <b>{{username}}</b></div>
+
+        <ion-grid class="home-first-row">
+          <ion-row>
+            <ion-col col-lg-3 offset-lg-3 col-md-4 offset-md-2 col-sm-6 col-6>
+              <div block class="square" (click)="goToEnti()">
+                <ion-icon class="icon-create-request" name="ios-contacts"></ion-icon>
+                <h3>Clienti</h3>
+                <h3>&nbsp;</h3>
+              </div>
+            </ion-col>
+            
+            <ion-col col-lg-3 col-md-4 col-sm-6 col-6>
+              <div block class="square" (click)="goToAlert()">
+                  <ion-icon class="icon-create-offer" name="ios-notifications"></ion-icon>
+                  <h3>Avvisi</h3>
+                  <h3>&nbsp;</h3>
+                </div>
+            </ion-col>
+    
+          </ion-row>
+        </ion-grid>
+    
+      </div>
+    
+      <div class="home-section section-buttons-others">
+    
+        <ion-grid class="home-second-row">
+          <ion-row>
+              <ion-col col-lg-3 offset-lg-3 col-md-4 offset-md-2 col-sm-6 col-6>
+                <div block class="square" (click)="goToPreventivoSconti()">
+                  <ion-icon class="icon-view-offers" name="ios-document"></ion-icon>
+                  <h3>Preventivi</h3>
+                  <h3>Sconti</h3>
+                </div>        
+            </ion-col>        
+            <ion-col col-lg-3 col-md-4 col-sm-6 col-6>
+                <div block class="square" (click)="goToContattiCRM()">
+                  <ion-icon class="icon-view-requests" name="ios-bookmarks"></ion-icon>
+                  <h3>Contatti</h3>
+                  <h3>CRM</h3>
+                </div>                  
+            </ion-col>
+    
+          </ion-row>
+        </ion-grid>
+    
+      </div>
+
+</div>
+
+<!-- 
+<hr />
+
+  <h3>OLD USE CASE</h3>
+
+    <div class="home-button-background">
+
+        <div class="home-section section-buttons-create">
+
+            <ion-grid class="home-first-row">
+              <ion-row>
+                  <ion-col col-4>
+                      <div block class="square" (click)="goToCustomHTML()">
+                        <ion-icon class="icon-view-requests" name="text"></ion-icon>
+                        <h3>Custom</h3>
+                        <h3>HTML</h3>
+                      </div>                  
+                  </ion-col>
+                <ion-col col-4>
+                    <div block class="square" (click)="goToRapporti()">
+                        <ion-icon class="icon-create-offer" name="ios-document"></ion-icon>
+                        <h3>Mostra</h3>
+                        <h3>Pratiche</h3>
+                      </div>
+                </ion-col>
+        
+                <ion-col col-4>
+                    <div block class="square" (click)="goToEnti()">
+                        <ion-icon class="icon-create-request" name="ios-contacts"></ion-icon>
+                        <h3>Clienti</h3>
+                        <h3>&nbsp;</h3>
+                      </div>
+                </ion-col>
+
+                <ion-col col-4>
+                    <div block class="square" (click)="goToDettaglioRapporto(168104)">
+                      <ion-icon class="icon-view-offers" name="briefcase"></ion-icon>
+                      <h3>Dettaglio</h3>
+                      <h3>Rapporto 168104</h3>
+                    </div>        
+                </ion-col>        
+                <ion-col col-4>
+                    <div block class="square" (click)="goToModificaProventiOneri()">
+                      <ion-icon class="icon-view-requests" name="text"></ion-icon>
+                      <h3>Modifica</h3>
+                      <h3>PROV/ON 8</h3>
+                    </div>                  
+                </ion-col>
+
+        
+              </ion-row>
+            </ion-grid>
+        
+          </div>
+        
+    </div> -->
+    
+</ion-content>

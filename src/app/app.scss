@@ -1,0 +1,91 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+// @media (min-width: 767px) {
+//     .menu-content {
+//         -webkit-transform: translate3d(270px, 0px, 0px) !important;
+//         width: calc(100% - 270px) !important;
+//     } 
+
+//     .bar-header button.ion-navicon {
+//         display: none;
+//     }
+// }
+
+.list-section-loadmore {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.split-pane-md.split-pane-visible>.split-pane-side {
+  min-width: 270px;
+  max-width: 270px;
+}
+
+.toast-error .toast-message {
+  background-color: #ff6161;
+}
+
+.toast-success .toast-message {
+  //background-color: #95fabf;
+}
+
+.toast-message {
+  text-align: center;
+}
+
+.list-element-level1 {
+  color: #c61400;
+  margin-top: 1rem !important;
+}
+
+.list-element-level2 {
+  color: rgb(0, 41, 75);
+}
+
+.list-element-level3 {
+  
+}
+
+.list-element-text {
+
+}
+
+.badge-warning {
+  color: #000;
+  background-color: #d89910;
+  position: relative !important;
+}
+
+.badge-error {
+  color: #000;
+  background-color: #ff3333;
+  position: relative !important;
+}
+
+.badge-ok {
+  color: #000;
+  background-color: #5cce3e;
+  position: relative !important;
+}
+
+
+.filter-select {
+  max-width: 100% !important;
+}

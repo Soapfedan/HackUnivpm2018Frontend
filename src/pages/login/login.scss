@@ -1,0 +1,95 @@
+page-login {
+    .image-logo {
+        text-align: center;
+        padding-top: 25px;
+        padding-bottom: 30px;
+      }
+    
+      .login-button {
+        background-color: #4989cf;
+      }
+    
+      .login-label {
+        color: #4989cf;
+      }
+    
+      .login-content {
+        /* padding-top: 25px; */
+        text-align: center;
+        background-color: white;
+      }
+    
+      .hr-style {
+        border-bottom: 1px solid #ccc;
+        margin: 10px 0;
+        width: 100%;
+      }
+    
+      .password-section {
+        text-align: center;
+      }
+    
+      .item-input {
+        border-bottom-color: transparent !important;
+      }
+    
+      .item-md.item-input.input-has-focus .item-inner {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    
+      .list-md .item-input.input-has-focus:last-child {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    
+      .list-md .item-input.input-has-focus:last-child .item-inner {
+        box-shadow: none;
+      }
+    
+      .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    
+      .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    
+      .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner {
+        box-shadow: none;
+      }
+    
+      .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    
+      .list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+      }
+    
+      ion-content>.scroll-content {
+        //background-color: rgb(73, 137, 207);
+        background: linear-gradient(#4989cf, #b6d7ea);
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    
+      ion-content>.scroll-content>ion-grid {
+        background-color: white;
+        padding-bottom: 50px;
+        box-shadow: 5px 10px #1223359c;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+
+      .item-border{
+        border-bottom-color: #dbdbdb;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+      }
+    
+}

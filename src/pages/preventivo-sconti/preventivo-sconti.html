@@ -1,0 +1,71 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="list-section-loadmore" *ngIf="loading">
+    <!-- Caricamento dati... -->
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+  <form (ngSubmit)="searchItem()">
+    <ion-grid>
+      <ion-row responsive-sm align-items-center>
+        <ion-col col-lg-9 col-md-9 col-sm-9 col-9>
+          <ion-row *ngIf="idEnte == undefined">
+            <ion-col>
+              <ion-item>
+                <ion-input type="text" name="search" placeholder="Filtra nome cliente" [(ngModel)]="search" clearInput></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-item no-lines>
+              <ion-col item-content>
+                <ion-select [(ngModel)]="statusSelected" name="statusSelected" class="filter-select select-padding" interface="alert">
+                  <ion-label>Scegli Categoria</ion-label>
+                  <ion-option value="all" selected="true">Tutte le categorie</ion-option>
+                  <ion-option *ngFor="let stat of statusList;" value="{{viewUtils.getPropertyOrDefault(stat,'value[0].value')}}">{{viewUtils.getPropertyOrDefault(stat,'value[1].value')}}</ion-option>
+                </ion-select>
+              </ion-col>
+            </ion-item>
+          </ion-row>
+          <ion-row *ngIf="idEnte == undefined">
+            <ion-item no-lines>
+              <ion-col item-content>
+                <ion-select [(ngModel)]="statusSconto" name="statusSconto" class="filter-select select-padding" interface="alert">
+                  <ion-label>Scegli Categoria</ion-label>
+                  <ion-option value="all" selected="true">Tutti i preventivi</ion-option>
+                  <ion-option value="deny">Sconto non autorizzato</ion-option>
+                  <ion-option value="wait">Sconto in attesa di autorizzazione</ion-option>
+                  <ion-option value="accepted">Sconto autorizzato</ion-option>
+                </ion-select>
+              </ion-col>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+        <ion-col col-lg-2 offset-lg-1 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-2 offset-1 class="list-filter-control">
+          <button type="submit" ion-button clear block>
+            <ion-icon name="search" class="large-icon"></ion-icon>
+          </button>
+          <button type="button" ion-button (click)="clearSearchText()" clear block>
+            <ion-icon name="close" class="large-icon"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  
+  
+  <dynamic *ngIf="content != undefined" [pageToRender]="pageToRender" [content]="content" [preProcessingHook]="setFieldsCallback"></dynamic>
+  
+  </div>
+  
+</ion-content>

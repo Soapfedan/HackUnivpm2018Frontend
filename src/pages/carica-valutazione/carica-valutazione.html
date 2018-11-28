@@ -1,0 +1,14 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <dynamic *ngIf="content != undefined" [preProcessingHook]="setFieldsCallback" [content]="content"></dynamic>
+</ion-content>

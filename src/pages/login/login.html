@@ -1,0 +1,48 @@
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+          <ion-col class="image-logo">
+            <img src="assets/imgs/logo_confidi_2.png" />
+          </ion-col>
+        </ion-row>
+    
+        <!-- <div class="hr-style"></div> -->
+        <ion-row class="login-content">
+          <ion-col>
+            <ion-list no-lines>
+              <ion-item >
+                <ion-label stacked color="primary">Username</ion-label>
+                <ion-input class="item-border" [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false"
+                  autocapitalize="off" required>
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label stacked color="primary">Password</ion-label>
+                <ion-input class="item-border" [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+                </ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+    
+        <ion-row responsive-sm>
+          <ion-col>
+            <button ion-button class="login-button" (click)="onLogin()" type="submit" block>Accedi</button>
+          </ion-col>
+        </ion-row>
+    
+    
+      <!--   <div class="hr-style"></div> -->
+        <ion-row responsive-sm class="access-second-block" align-items-center>
+          <ion-col block>
+            <button ion-button (click)="rememberPassword()" color="light" block>Password Dimenticata</button>
+          </ion-col>
+        </ion-row>
+       <!--  <ion-row>
+          <ion-col>
+            <button ion-button (click)="onSignup()" color="light" block>Registrati</button>
+          </ion-col>
+        </ion-row> -->
+      </ion-grid>
+</ion-content>

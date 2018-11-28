@@ -1,0 +1,39 @@
+page-contatti-crm {
+
+    .col-calendar {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: large;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+    }
+
+    .col-calendar.col-month {
+        background-color:#4989cf //#427d9c;
+    }
+
+    .col-calendar.col-year {
+        background-color:#a6a6a6 // burlywood;
+    }
+
+    .card-calendar-header {
+        // background-color: #7f7f7f;
+        // color: white;
+    }
+
+    .no_results {
+        text-align: center;
+    }
+
+    .header-day {
+        background-color: #7f7f7f;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        font-size: x-large;
+        font-weight: bold;
+    }
+
+}

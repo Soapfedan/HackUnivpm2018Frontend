@@ -1,0 +1,163 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contatti CRM</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-item hidden>
+    <ion-datetime #calendar (ionChange)="calendarChanged()"
+      class="date-time"
+      placeholder="Seleziona data"
+      cancelText="Annulla"
+      doneText="Ok"
+      displayFormat="YYYY/MM/01"
+      max="2015"
+      max="2020"
+      name="currentDate"
+      [(ngModel)]="currentDate"
+      pickerFormat="MMMM YYYY"
+      monthNames="Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre">
+    </ion-datetime>
+  </ion-item>
+
+
+  <ion-grid style="padding-bottom: 25px;">
+    <ion-row (click)="triggerCalendar()">
+      <ion-col col-9 class="col-calendar col-month">
+        {{getMonthName(month)}}
+      </ion-col>
+      <ion-col col-3 class="col-calendar col-year">
+        {{year}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <button color="light" ion-button block (click)="goToPrevMonth()" icon-only>
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button color="light" ion-button block (click)="goToNextMonth()" icon-only>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <div class="list-section-loadmore" *ngIf="isLoading == true">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+
+
+  <ion-list no-lines *ngIf="isLoading == false">
+
+    <ng-container *ngFor="let item of items">
+
+      <div *ngIf="item.type == 'header'" class="header-day">
+        {{item.value}}
+      </div>
+
+      <ion-card *ngIf="item.type == 'contact'" (click)="goToDetail(item.value.ID)">
+        <ion-card-header class="card-calendar-header">
+          <b>{{item.value.hour}}</b>
+        </ion-card-header>
+
+
+        <ion-list>
+          <ion-grid>
+            <ion-row>
+              <ion-col align-self-center col-5 offset-1>
+                <ion-label>
+                  Tipo
+                </ion-label>
+              </ion-col>
+              <ion-col align-self-center col-5>
+                {{item.value.Tipo}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col align-self-center col-5 offset-1>
+                <ion-label>
+                  Status
+                </ion-label>
+              </ion-col>
+              <ion-col align-self-center col-5>
+                {{item.value.Status}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col align-self-center col-5 offset-1>
+                <ion-label>
+                  Ente
+                </ion-label>
+              </ion-col>
+              <ion-col align-self-center col-5>
+                {{item.value.Denominazione_impresa}}
+              </ion-col>
+            </ion-row>
+            <!-- <ion-row>
+              <ion-col align-self-center col-5 offset-1>
+                <ion-label>
+                  Descrizione
+                </ion-label>
+              </ion-col>
+              <ion-col align-self-center col-5>
+                {{item.Oggetto}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col align-self-center col-5 offset-1>
+                <ion-label>
+                  Processo
+                </ion-label>
+              </ion-col>
+              <ion-col align-self-center col-5>
+                <span>asdasdasd</span>
+              </ion-col>
+            </ion-row> -->
+
+
+            <!-- <ion-row responsive-sm>
+              <ion-col col-12>
+                <button color="light" ion-button block (click)="goToDetail(item.value.ID)">vai al dettaglio</button>
+              </ion-col>
+            </ion-row> -->
+
+          </ion-grid>
+
+        </ion-list>
+      </ion-card>
+
+
+
+    </ng-container>
+
+
+    <div *ngIf="items && items.length == 0" class="no_results">
+      <ion-row>
+        <ion-col>
+          <ion-label>
+            Non ci sono contatti
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+  </ion-list>
+
+
+
+
+
+
+</ion-content>

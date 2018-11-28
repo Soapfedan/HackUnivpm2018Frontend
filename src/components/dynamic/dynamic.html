@@ -1,0 +1,209 @@
+
+
+
+<ng-container *ngIf="content.type == cfg.CMP_LIST">
+  <ion-grid>
+
+    <!-- TODO: search area -->
+
+    <ng-container *ngFor="let item of items" responsive-sm>
+      <ng-container *ngIf="item.value != undefined">
+        <ion-card class="card-list">
+          <ion-card-header>n° {{item.title}}</ion-card-header>
+          <ion-card-content>
+            <ng-container *ngFor="let prop of item.value" responsive-sm>
+              <dynamic [content]="prop" [pageToRender]="pageToRender"></dynamic>
+            </ng-container>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+      
+    </ng-container>
+
+  </ion-grid>
+
+
+  <!-- TODO: pagination... infinite scroll? -->
+  <div *ngIf="isPageEnd == true" class="no-more-elements">
+    <ion-row>
+      <ion-col col-12>
+          Non ci sono più elementi
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ng-container *ngIf="isPageEnd != true">
+    <ion-infinite-scroll (ionInfinite)="doInfiniteScroll($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ng-container>
+
+
+</ng-container>
+
+
+
+
+
+
+
+<ng-container *ngIf="content.type == cfg.CMP_LIST_VIEW">
+  <ion-grid>
+    <ng-container *ngFor="let c of content.value" responsive-sm>
+      <dynamic [content]="c" [pageToRender]="pageToRender"></dynamic>
+    </ng-container>
+  </ion-grid>
+</ng-container>
+
+
+
+<ng-container *ngIf="content.type == cfg.CMP_LIST_VIEW_ENTITY_LABELED_STRING">
+  <ion-row responsive-sm>
+    <ion-col col-6>
+      <b>{{content.label}}</b>
+    </ion-col>
+    <ion-col col-6>
+      {{content.value}}
+    </ion-col>
+  </ion-row>
+</ng-container>
+
+
+
+<ng-container *ngIf="content.type == cfg.CMP_LIST_VIEW_ENTITY_LABELED_CHECKBOX">
+    <ion-row responsive-sm>
+      <ion-col col-6>
+        <b>{{content.label}}</b>
+      </ion-col>
+      <ion-col col-6>
+        <ion-checkbox color="dark" checked="{{content.value}}" class="readonly-cmp"></ion-checkbox>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+
+
+
+<ng-container *ngIf="content.type == cfg.CMP_LIST_VIEW_ENTITY_BUTTON">
+  <ion-row responsive-sm>
+    <ion-col col-12>
+      <button ion-button block (click)="doAction(content.action)">{{content.value}}</button>
+    </ion-col>
+  </ion-row>
+</ng-container>
+
+
+
+<ng-container *ngIf="content.type == cfg.CMP_LIST_EDIT">
+  <ion-list>
+
+    <!-- <div padding> -->
+    <button *ngIf="content.submit != undefined" ion-button color="primary" (click)="doAction(content.submit.action)" block>
+      {{content.submit.value}}
+    </button>
+
+    <button ion-button color="primary" (click)="goBack()" block>
+      Annulla
+    </button>
+  
+    <ng-container *ngFor="let c of content.value">
+
+      <ion-row responsive-sm class="details-section-col" align-items-center>
+        
+        
+        <ion-item  no-lines text-wrap *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_STRING">
+            <ion-col item-content col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 class="section-col">
+              <ion-label>{{c.label}}</ion-label>
+              <ion-input type="text" [(ngModel)]="form[c.key]" name="{{c.key}}"></ion-input>
+              <!-- value="{{c.value}}" -->
+            </ion-col>
+        </ion-item>
+
+
+        <ion-item  no-lines text-wrap *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_DISABLED_STRING">
+          <ion-col item-content col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 class="section-col">
+            <ion-label>{{c.label}}</ion-label>
+            <ion-input type="text" value="{{c.show}}" disabled></ion-input>
+            <!-- <ion-input type="hidden" [(ngModel)]="form[c.key]" name="{{c.key}}"></ion-input> -->
+          </ion-col>
+       </ion-item>
+      
+
+        <ion-item *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_NUMBER">
+          <ion-label>{{c.label}}</ion-label>
+          <ion-input type="number" [(ngModel)]="form[c.key]" name="{{c.key}}"></ion-input>
+          <!-- value="{{c.value}}" -->
+        </ion-item>
+
+
+        <ion-item *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_CHECKBOX">
+          <ion-label>{{c.label}}</ion-label>
+          <ion-checkbox name="{{c.key}}" [(ngModel)]="form[c.key]" class="check"></ion-checkbox>
+        </ion-item>
+        
+
+        <!-- https://ionicframework.com/docs/api/components/select/Select/ -->
+        <ion-item *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_SELECT">
+            <!-- <ion-col item-content col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 class="section-col"> -->
+            <!-- <ion-col col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 class="section-col"> -->
+            <ion-label class="section-col">{{c.label}}</ion-label>
+            <ion-select interface="alert" [(ngModel)]="form[c.key]" name="{{c.key}}">
+              <ion-label>{{c.label}}</ion-label>
+              <ion-option *ngFor="let opt of c.options;"
+                          value="{{opt.key}}"
+                          selected="{{c.value == opt.key ? true : false}}">
+                {{opt.value}}
+              </ion-option>
+            </ion-select>
+          <!-- </ion-col> -->
+        </ion-item>
+
+
+        <ng-container *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_FILTERING_SELECT">
+          <ion-item (click)="goToFilteringSelectPage(show[c.key], c.key, c.search)" no-lines text-wrap>
+            <ion-col item-content col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-12 class="section-col">
+              <ion-label>{{c.label}}</ion-label>
+              <span>{{show[c.key]}}</span>
+              <!-- {{c.selected.value}} -->
+              <!-- {{form[c.key]}} -->
+            </ion-col>
+          </ion-item>
+          <ion-input type="hidden" [(ngModel)]="form[c.key]" name="{{c.key}}"></ion-input>
+        </ng-container>
+
+
+        <ion-item *ngIf="c.type == cfg.CMP_LIST_EDIT_ENTITY_LABELED_DATE">
+          <ion-label class="section-col">{{c.label}}</ion-label>
+          <!-- <ion-datetime class="date-time" placeholder="Seleziona data" cancelText="Annulla" min={{nowDate}} max={{maxDate}}
+                doneText="Ok" displayFormat="DD/MM/YYYY" name="Data_Scadenza" formControlName="Data_Scadenza"
+                pickerFormat="D MMMM YYYY" (ionChange)="checkDate()" monthNames="Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre"></ion-datetime> -->
+          <ion-datetime class="date-time"
+                        placeholder="Seleziona data"
+                        cancelText="Annulla"
+                        doneText="Ok"
+                        displayFormat="DD/MM/YYYY"
+                        max="2050"
+                        name="Data_Scadenza"
+                        [(ngModel)]="form[c.key]"
+                        pickerFormat="D MMMM YYYY"
+                        monthNames="Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre">
+                      </ion-datetime>
+        </ion-item>
+
+
+
+      </ion-row>
+
+        <div class="error">{{errors[c.key]}}</div> 
+
+    </ng-container>
+
+  </ion-list>
+</ng-container>
+
+
+
+
+
+
+
+<div #customHTML></div>

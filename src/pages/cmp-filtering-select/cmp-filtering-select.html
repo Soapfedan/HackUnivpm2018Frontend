@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar color="light">
+      <!-- <form (submit)="searchCity()">
+        <ion-searchbar
+          color="primary"
+          name="search"
+          placeholder="Inserisci"
+          [(ngModel)]="search"
+          (ionClear)="clearSearchText()"
+          (ionInput)="searchCity()">
+        </ion-searchbar>
+      </form> -->
+    <form (submit)="searchItem()">
+      <ion-searchbar
+        color="primary"
+        name="search"
+        placeholder="Inserisci"
+        [(ngModel)]="search"
+        (ionClear)="clearSearchText()"
+        (ionChange)="searchItem()">
+      </ion-searchbar>
+    </form>
+    </ion-navbar>
+  </ion-header>
+    
+    
+  <ion-content class="layout">
+
+    <div class="selected-elemenet">
+      <span><b>Selezionato:</b> {{input}}</span>
+    </div>
+
+    <ion-list class="modal-list-content" *ngIf="items.length > 0">
+      <ion-item *ngFor="let i of items">
+        <ion-label text-wrap (click)="selectItem(i)">{{i.label}}</ion-label>
+        <!-- (click)="selectCity(c)" -->
+      </ion-item>
+    </ion-list>
+
+
+    <div *ngIf="isPageEnd == true" class="no-more-elements">
+      <ion-row>
+        <ion-col col-12>
+            Non ci sono più elementi
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ng-container *ngIf="isPageEnd != true">
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ng-container>
+    
+  
+  </ion-content>
