@@ -16,6 +16,6 @@
 <ion-content padding>
 
   <ion-list>
-    <button ion-button (click)="buyProduct(p.id,p.cost)" *ngFor="let p of products,let i = index">{{p.name}} Acquista {{i}}</button>
+    <button ion-button [disabled]="!canBuyIt(p.cost)" (click)="buyProduct(p.id,p.cost)" *ngFor="let p of products,let i = index">{{p.name}} Acquista {{i}}</button>
   </ion-list>
 </ion-content>

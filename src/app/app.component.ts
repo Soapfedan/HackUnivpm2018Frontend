@@ -13,6 +13,7 @@ import { ApiInterface, ApiInterfaceToken } from '../providers/api.interface';
 import { LocalizationPage } from '../pages/localization/localization';
 import { WalletPage } from '../pages/wallet/wallet';
 import { ListaProdottiPage } from '../pages/lista-prodotti/lista-prodotti';
+import { UtilsProvider } from '../providers/utils/utils';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,7 @@ export class MyApp {
               public statusBar: StatusBar,
               public splashScreen: SplashScreen, 
               public storage: StorageProvider,
+              public utilsProvider: UtilsProvider,
               @Inject(ApiInterfaceToken) public api: ApiInterface,
               public cfg: ConfigProvider) {
 
@@ -80,7 +82,7 @@ export class MyApp {
   }
 
    shouldShow(isOpen = true) {
-     return this.isAuthenticated();
+     return this.isAuthenticated() && this.utilsProvider.isDesktop();
    }
 
 }

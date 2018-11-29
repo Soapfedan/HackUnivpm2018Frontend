@@ -8,6 +8,7 @@ import { ConfigProvider } from '../../providers/config/config';
 import { LocalizationPage } from '../localization/localization';
 import { WalletPage } from '../wallet/wallet';
 import { ListaProdottiPage } from '../lista-prodotti/lista-prodotti';
+import { UtilsProvider } from '../../providers/utils/utils';
 
 
 
@@ -23,7 +24,8 @@ export class HomePage {
   constructor(
     private navCtrl: NavController,
     private cfg: ConfigProvider,
-    private storage: StorageProvider
+    private storage: StorageProvider,
+    public utilsProvider: UtilsProvider
     ) {
     this.username = storage.get(cfg.config.AUTH_USERNAME) || "";
 

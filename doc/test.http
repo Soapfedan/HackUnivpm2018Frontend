@@ -3,4 +3,14 @@
 ###
 
 
-GET https://httpbin.org/get
+GET http://localhost:8100/app/wallet/
+
+
+###
+POST http://localhost:8100/app/wallet/buy/
+
+{
+    "id_product":1,
+    "user":"ee11cbb19052e40b07aac0ca060c23ee",
+    "cost":"100"
+}

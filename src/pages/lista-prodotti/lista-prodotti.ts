@@ -11,6 +11,7 @@ import _ from 'lodash';
 export class ListaProdottiPage {
 
   products: Array<any> = [];
+  total: number;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -25,7 +26,12 @@ export class ListaProdottiPage {
   }
 
   getProductList(){
-    this.api.getProductList()
+    this.api.getWalletValues()
+    .then( content => {
+      this.total = _.get(content,"result.credit",0);
+      console.log(this.total);
+      return this.api.getProductList()
+    })
     .then( e=> {
       this.products = _.get(e,"result");
       console.log(e);
@@ -33,6 +39,11 @@ export class ListaProdottiPage {
     .catch( e => {
       console.log(e);
     })
+  }
+
+  canBuyIt(cost){
+    let c = parseInt(cost)
+    return this.total >= c;
   }
 
   buyProduct(id,cost){
