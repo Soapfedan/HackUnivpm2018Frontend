@@ -62,7 +62,8 @@ export class ListaProdottiPage {
       this.products.forEach( (prod,i) =>{
         let el = _.get(e[i],"result[0].name","");
         console.log(el);
-        prod.wcn = el;
+        _.set(prod,"wcn",el);
+        /* prod.wcn = el; */
       })
       return this.api.getWalletValues()
      

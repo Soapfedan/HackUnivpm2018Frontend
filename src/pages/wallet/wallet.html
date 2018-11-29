@@ -96,8 +96,8 @@
             <ion-label>{{t.product_id}}</ion-label>
           </ion-col>
           <ion-col item-content>
-            <ion-label class="positive" *ngIf="t.trash_token != null">+ {{t.credit}} €</ion-label>
-            <ion-label class="negative" *ngIf="t.trash_token == null">- {{t.credit}} €</ion-label>
+            <ion-label class="positive" *ngIf="t.trash_token != null">+ {{t.credit}}</ion-label>
+            <ion-label class="negative" *ngIf="t.trash_token == null">- {{t.credit}}</ion-label>
           </ion-col>
           <ion-col item-content>
             <ion-icon *ngIf="t.trash_token != null" (click)="goToDetail(t.product_id,true)" name="md-play"></ion-icon>   
