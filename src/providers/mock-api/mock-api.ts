@@ -28,12 +28,12 @@ export class MockApiProvider implements ApiInterface {
     }
     
   login(username:string, password:string): Promise<any> {
-    if (username == undefined && password == undefined) {
+   /*  if (username == undefined && password == undefined) { */
       this.storage.set(this.cfg.config.AUTH_TOKEN, "asd-asd-asd-asd");
       return Promise.resolve({ server_status : 200, data: "ehiii"});
-    } else {
+   /*  } else {
       return Promise.resolve({ server_status : 401, data: "not authenticated"});
-    }
+    } */
   }
     
   logout(): Promise<any> {

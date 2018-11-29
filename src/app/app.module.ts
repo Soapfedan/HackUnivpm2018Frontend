@@ -36,7 +36,7 @@ import { ListaValutazioniPage } from '../pages/lista-valutazioni/lista-valutazio
 import { CaricaValutazionePage } from '../pages/carica-valutazione/carica-valutazione';
 import { AlertPage } from '../pages/alert/alert';
 
-let isDev = false;
+let isDev = true;
 
 @NgModule({
   declarations: [

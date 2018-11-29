@@ -18,8 +18,8 @@ export class LoginPage {
     username ? : string,
     password ? : string
   } = {
-    username: "retevendita1",
-    password: "retevendita1"
+    username: "user",
+    password: "password"
   };
 
   constructor(
@@ -30,8 +30,8 @@ export class LoginPage {
     private storage : StorageProvider,
     private cfg: ConfigProvider
   ) {
-    this.login.username = storage.get(cfg.config.AUTH_USERNAME) || "retevendita1";
-    this.login.password = storage.get(cfg.config.AUTH_USERNAME) || "retevendita1";
+    this.login.username = storage.get(cfg.config.AUTH_USERNAME) || "user";
+    this.login.password = storage.get(cfg.config.AUTH_USERNAME) || "password";
   }
 
   
