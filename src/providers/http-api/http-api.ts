@@ -105,6 +105,14 @@ export class HttpApiProvider implements ApiInterface {
 
     return this.http.post(`${basePath}/wallet/buy/`,body,this._getOpts_json()).toPromise();
   }
+
+  checkLocalization(): Promise<any> {
+
+    let user_token = this.storage.get(this.cfg.config.AUTH_TOKEN) || btoa("Prova");
+
+    return this.http.get(`${basePath}/localization/check/${user_token}`).toPromise();
+  }
+ 
  
 
  

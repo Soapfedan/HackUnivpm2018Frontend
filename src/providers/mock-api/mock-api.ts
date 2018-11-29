@@ -8,7 +8,6 @@ import { MockData } from './mock/mock-data';
 
 @Injectable()
 export class MockApiProvider implements ApiInterface {
- 
 
    
   mockData : MockData;
@@ -85,6 +84,11 @@ export class MockApiProvider implements ApiInterface {
   buyProduct(id: any,cost: any): Promise<any> {
     throw new Error("Method not implemented.");
   }
+
+  checkLocalization(): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
+ 
   
 }
 

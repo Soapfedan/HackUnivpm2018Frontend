@@ -23,6 +23,8 @@ export interface ApiInterface {
 
     getTrashDetail(id): Promise<any>;
 
+    checkLocalization(): Promise<any>;
+
     buyProduct(id,cost): Promise<any>;
 
 }

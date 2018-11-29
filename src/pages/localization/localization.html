@@ -17,6 +17,17 @@
 
 
 <ion-content padding>
-  <p>Puoi inviare il codice</p>
-  <button ion-button (click)="sendCode()">Invia il codice</button>
+  <ng-container *ngIf="!flag && !loading">
+    <p>Puoi inviare il codice</p>
+    <button ion-button (click)="sendCode()">Invia il codice</button>
+  </ng-container>
+  <ng-container *ngIf="flag && !loading">
+      <p>Sei collegato ad un cestino</p>
+    </ng-container>
+
+    <div class="list-section-loadmore" *ngIf="loading">
+    <!-- Caricamento dati... -->
+    <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    
 </ion-content>

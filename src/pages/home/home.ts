@@ -44,8 +44,32 @@ export class HomePage {
     this.api.getWalletValues()
       .then( content => { 
         this.wallet = _.get(content,"result",this.wallet);
-        loading.dismiss();
+        let promises: Array<any> = [];
+        let transactions: Array<any> = _.get(this.wallet,"transaction",[]);
+        transactions.forEach( t => {
+          if(_.isEmpty(t.trash_token)){
+            promises.push(this.api.getProductDetail(_.get(t,"product_id")));
+          }else{
+            promises.push(this.api.getTrashDetail(_.get(t,"product_id")));
+          }
+        })
+
+        
+        /* loading.dismiss(); */
         console.log(content);
+        return Promise.all(promises);
+      })
+      .then( e => {
+        console.log(e);
+        let transactions: Array<any> = _.get(this.wallet,"transaction",[]);
+        transactions.forEach( (prod,i) =>{
+          let el = _.get(e[i],"result[0].name","");
+          console.log(el);
+          _.set(prod,"wcn",el);
+          /* prod.wcn = el; */
+        }) 
+        _.set(this.wallet,"transactions",transactions);      
+        loading.dismiss();
       })
       .catch(e => console.log(e))
   }
