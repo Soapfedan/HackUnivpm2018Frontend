@@ -97,7 +97,7 @@ export class ListaProdottiPage {
       const alert = this.alertCtrl.create({
         title: "Messaggio",
         subTitle: "Acquisto eseguito!",
-        buttons: ['Prosegui']
+        buttons: [{text: 'Prosegui',handler: ()=> {this.navCtrl.setRoot(ListaProdottiPage)}}]
       });
       alert.present();
 
