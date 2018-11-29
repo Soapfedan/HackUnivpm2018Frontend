@@ -4,6 +4,7 @@ import { ApiInterfaceToken, ApiInterface } from '../../providers/api.interface';
 
 import {Md5} from 'ts-md5/dist/md5';
 import { ViewUtilsProvider } from '../../providers/view-utils/view-utils';
+import { UtilsProvider } from '../../providers/utils/utils';
 
 @Component({
   selector: 'page-localization',
@@ -15,6 +16,7 @@ export class LocalizationPage {
     public navParams: NavParams,
     private loadingCtrl: LoadingController,
     private viewUtils: ViewUtilsProvider,
+    public utilsProvider: UtilsProvider,
     private alertCtrl: AlertController,
     @Inject(ApiInterfaceToken) public api: ApiInterface
     ) {

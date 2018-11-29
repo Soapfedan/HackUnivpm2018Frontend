@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button *ngIf="utilsProvider.isMobile()" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Collegati con un dispositivo</ion-title>
   </ion-navbar>
 

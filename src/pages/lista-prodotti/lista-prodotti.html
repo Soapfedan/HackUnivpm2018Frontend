@@ -7,6 +7,11 @@
 <ion-header>
 
   <ion-navbar>
+    
+      <button *ngIf="utilsProvider.isMobile()" ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+
     <ion-title>Lista Prodotti</ion-title>
 
     <ion-buttons end>
@@ -23,7 +28,7 @@
 
     <ion-list>
         <ion-row responsive-sm>
-          <ion-col *ngFor="let p of products,let i = index" col-6>
+          <ion-col *ngFor="let p of products,let i = index" col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12>
             <ion-card>
   
               <ion-card-header>

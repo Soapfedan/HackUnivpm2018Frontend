@@ -5,6 +5,7 @@ import { ApiInterfaceToken, ApiInterface } from '../../providers/api.interface';
 import _ from 'lodash';
 import { ViewUtilsProvider } from '../../providers/view-utils/view-utils';
 import { HomePage } from '../home/home';
+import { UtilsProvider } from '../../providers/utils/utils';
 
 @Component({
   selector: 'page-lista-prodotti',
@@ -23,6 +24,7 @@ export class ListaProdottiPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private viewUtils: ViewUtilsProvider,
+    public utilsProvider: UtilsProvider,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     @Inject(ApiInterfaceToken) public api: ApiInterface
@@ -67,7 +69,6 @@ export class ListaProdottiPage {
     })
     .then( content => { 
       this.wallet = _.get(content,"result",this.wallet);
-      loading.dismiss();
       console.log(content);
     })
     .catch( e => {
@@ -98,7 +99,7 @@ export class ListaProdottiPage {
         buttons: ['Prosegui']
       });
       alert.present();
-      this.goToHome();
+
     })
     .catch( e => {
       console.log(e);
