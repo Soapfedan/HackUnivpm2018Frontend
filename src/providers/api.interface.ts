@@ -15,4 +15,14 @@ export interface ApiInterface {
 
     sendLocalizationCode(deviceCode): Promise<any>;
 
+    getWalletValues(): Promise<any>;
+
+    getProductList(): Promise<any>;
+
+    getProductDetail(id): Promise<any>;
+
+    getTrashDetail(id): Promise<any>;
+
+    buyProduct(id,cost): Promise<any>;
+
 }

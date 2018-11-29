@@ -21,6 +21,9 @@ import { UtilsProvider } from '../providers/utils/utils';
 
 import { ComponentsModule } from '../components/components.module';
 import { LocalizationPage } from '../pages/localization/localization';
+import { WalletPage } from '../pages/wallet/wallet';
+import { DettaglioProdottoPage } from '../pages/dettaglio-prodotto/dettaglio-prodotto';
+import { ListaProdottiPage } from '../pages/lista-prodotti/lista-prodotti';
 
 let isDev = false;
 
@@ -30,7 +33,10 @@ let isDev = false;
     HomePage,
     ListPage,
     LoginPage,
-    LocalizationPage
+    LocalizationPage,
+    WalletPage,
+    DettaglioProdottoPage,
+    ListaProdottiPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,10 @@ let isDev = false;
     HomePage,
     ListPage,
     LoginPage,
-    LocalizationPage
+    LocalizationPage,
+    WalletPage,
+    DettaglioProdottoPage,
+    ListaProdottiPage
   ],
   providers: [
     StatusBar,
@@ -54,7 +63,8 @@ let isDev = false;
     StorageProvider,
     {provide: ApiInterfaceToken, useClass: isDev ? MockApiProvider : HttpApiProvider},
     ViewUtilsProvider,
-    UtilsProvider
+    UtilsProvider,
+    WalletPage
   ]
 })
 export class AppModule {}

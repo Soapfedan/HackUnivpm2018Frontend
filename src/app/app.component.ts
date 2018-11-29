@@ -10,8 +10,9 @@ import { StorageProvider } from '../providers/storage/storage';
 import { ConfigProvider } from '../providers/config/config';
 import { LoginPage } from '../pages/login/login';
 import { ApiInterface, ApiInterfaceToken } from '../providers/api.interface';
-import { ContattiCrmPage } from '../pages/contatti-crm/contatti-crm';
 import { LocalizationPage } from '../pages/localization/localization';
+import { WalletPage } from '../pages/wallet/wallet';
+import { ListaProdottiPage } from '../pages/lista-prodotti/lista-prodotti';
 
 @Component({
   templateUrl: 'app.html'
@@ -40,7 +41,10 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Associa', component: LocalizationPage }
+      { title: 'Associa', component: LocalizationPage },
+      { title: 'Portafoglio', component: WalletPage },
+      { title: 'Lista prodotti', component: ListaProdottiPage }
+
      /*  { title: 'List', component: ListPage } */
     ];
 

@@ -22,7 +22,9 @@ export class LocalizationPage {
 
   sendCode(){
     let code = Md5.hashStr("trash");
-    this.api.sendLocalizationCode(code);
+    this.api.sendLocalizationCode(code)
+    .then(e => console.log(e))
+    .catch(e => console.log(e))
   }
 
 }

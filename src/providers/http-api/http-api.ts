@@ -18,7 +18,6 @@ let basePath = configs.API_BASE;
 
 @Injectable()
 export class HttpApiProvider implements ApiInterface {
-
  
 
   token : string = "";
@@ -32,7 +31,9 @@ export class HttpApiProvider implements ApiInterface {
 
   _getOpts_old = () => ({ headers : { "Auth-Key": this.storage.get(this.cfg.config.AUTH_TOKEN) } })
 
-  _getOpts = () => ({ headers : { "Content-Type": this.cfg.config.URL_FORM_ENCODED } })
+  _getOpts_xxx = () => ({ headers : { "Content-Type": this.cfg.config.URL_FORM_ENCODED } })
+
+  _getOpts_json = () => ({ headers : { "Content-Type": this.cfg.config.JSON_CONTENT_TYPE } })
 
   login(username:string, password:string): Promise<any> {
     return this.http.post(`${basePath}/sm_auth.php`, {
@@ -62,16 +63,45 @@ export class HttpApiProvider implements ApiInterface {
     let user_token = this.storage.get(this.cfg.config.AUTH_TOKEN) || btoa("Prova");
 
     let body = {
-      "trash_token": deviceCode,
-      "user_token": user_token,
+      "trash": deviceCode,
+      "user": user_token,
     }
 
-    console.log(body);
-
-    return Promise.resolve("aa");
-
-    /* return this.http.post(`${basePath}/localization`,body,this._getOpts()).toPromise(); */
+    return this.http.post(`${basePath}/localization`,body,this._getOpts_json()).toPromise();
   }
+
+  getWalletValues(): Promise<any> {
+    
+    let user_token = this.storage.get(this.cfg.config.AUTH_TOKEN) || btoa("Prova");
+
+    return this.http.get(`${basePath}/wallet/transaction/${user_token}`).toPromise();
+  }
+
+  getProductList(): Promise<any> {
+    return this.http.get(`${basePath}/products`).toPromise();
+  }
+
+  getProductDetail(id: any): Promise<any> {
+    return this.http.get(`${basePath}/products/get/${id}`).toPromise();
+  }
+  getTrashDetail(id: any): Promise<any> {
+    return this.http.get(`${basePath}/products/waste/${id}`).toPromise();
+  }
+
+  buyProduct(id: any,cost: any): Promise<any> {
+
+    let user_token = this.storage.get(this.cfg.config.AUTH_TOKEN) || btoa("Prova");
+
+    let body = {
+      "id_product": id,
+      "user": user_token,
+      "cost": cost
+    }
+
+    return this.http.post(`${basePath}/wallet/buy/`,body,this._getOpts_json()).toPromise();
+  }
+ 
+
  
 
 }

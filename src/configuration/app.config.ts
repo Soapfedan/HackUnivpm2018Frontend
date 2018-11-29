@@ -7,6 +7,8 @@ export class Configuration {
 
     URL_FORM_ENCODED: string = "application/x-www-form-urlencoded"
 
+    JSON_CONTENT_TYPE: string = "application/json"
+
       // CLASSES
     CLASS_TOAST_ERROR: string = "toast-error"
     CLASS_TOAST_SUCCESS: string = "toast-success"

@@ -6,6 +6,8 @@ import { StorageProvider } from '../../providers/storage/storage';
 import { ConfigProvider } from '../../providers/config/config';
 
 import { LocalizationPage } from '../localization/localization';
+import { WalletPage } from '../wallet/wallet';
+import { ListaProdottiPage } from '../lista-prodotti/lista-prodotti';
 
 
 
@@ -28,79 +30,16 @@ export class HomePage {
   }
 
   localize(){
-    this.navCtrl.push(LocalizationPage);
+    this.navCtrl.setRoot(LocalizationPage);
   }
 
-  goToAlert(){
-    this.navCtrl.push(AlertPage);
+  goToWallet(){
+    this.navCtrl.setRoot(WalletPage);
   }
 
-  goToRapporti(){
-    this.navCtrl.push(RapportiPage);
+  goToProductList(){
+    this.navCtrl.setRoot(ListaProdottiPage);
   }
 
-  goToDettaglioRapporto(idRapporto) {
-    this.navCtrl.push(DettaglioRapportoPage, { idRapporto: idRapporto || "168104" })
-  }
-
-  goToModificaProventiOneri() {
-    this.navCtrl.push(ContentPage, { urlAction: "/sm_api.php?nome_entita=proventi_oneri&id_entita=8&op=edit" })
-  }
-
-  goToPreventivoSconti(){
-    this.navCtrl.push(PreventivoScontiPage);
-  }
-
-  goToContattiCRM(){
-    this.navCtrl.push(ContattiCrmPage);
-  }
-
-  goToCustomHTML() {
-    this.navCtrl.push(
-      ContentPage,
-      {
-        content: {
-            "type": "CMP_LIST_VIEW",
-            "value": [
-                {
-                    "type": "CMP_LIST_VIEW_ENTITY_BUTTON",
-                    "value": "modifica",
-                    "action": {
-                        "type": "ACT_GO_TO",
-                        "value": "checkboxEdit"
-                    }
-                },
-                {
-                    "type": "CMP_LIST_VIEW_ENTITY_LABELED_STRING",
-                    "value": "SI",
-                    "label": "Checkbox TRUE",
-                    "innerType": "checkboxfld"
-                },
-                {
-                  "type": "CMP_CUSTOM_HTML",
-                  "cmp": CustomComponent,
-                  "value": {
-                    "type": "sconto-autorizzato"
-                  }
-                },
-                {
-                    "type": "CMP_LIST_VIEW_ENTITY_LABELED_STRING",
-                    "value": "NO",
-                    "label": "Checkbox FALSE",
-                    "innerType": "checkboxfld",
-                    "key": "checkBoxFalse"
-                },
-                {
-                  "type": "CMP_CUSTOM_HTML",
-                  "cmp": CustomComponent,
-                  "value": {
-                    "type": "sconto-non-autorizzato"
-                  }
-                }
-            ]
-        }
-      }
-    )
-  }
 
 }

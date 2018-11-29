@@ -9,14 +9,8 @@ import { MockData } from './mock/mock-data';
 @Injectable()
 export class MockApiProvider implements ApiInterface {
  
-  postMarcaEvento(idEvento): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-  getLastAlert(): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
 
-  
+   
   mockData : MockData;
 
   constructor(
@@ -44,6 +38,51 @@ export class MockApiProvider implements ApiInterface {
     
 
   sendLocalizationCode(deviceCode): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
+
+  getWalletValues(): Promise<any> {
+
+    let transaction: any = {
+      
+      "result": {
+        "credit": 20,
+        transaction: [
+          {
+            "product_id" : "Bottiglia vetro",
+            "credit" : "0,25",
+            "trash_token": "2" 
+          },
+          {
+            "product_id" : "Biglietto cinema",
+            "credit" : "5",
+            "trash_token": "" 
+          },
+          {
+            "product_id" : "Scatola uova",
+            "credit" : "0,10",
+            "trash_token": "2" 
+          }
+         
+        ]
+      }
+    };
+
+    return Promise.resolve(transaction);
+  }
+
+  getProductList(): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
+
+  getProductDetail(id: any): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
+  getTrashDetail(id: any): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
+
+  buyProduct(id: any,cost: any): Promise<any> {
     throw new Error("Method not implemented.");
   }
   
