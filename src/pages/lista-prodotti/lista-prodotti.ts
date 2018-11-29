@@ -80,25 +80,25 @@ export class ListaProdottiPage {
     return this.total >= c;
   }
 
-/*   goToHome(){
+  goToHome(){
     this.navCtrl.setRoot(HomePage);
-  } */
+  }
 
   buyProduct(id,cost){
-/*     let loading = this.loadingCtrl.create({ });
-    loading.present(); */
+    let loading = this.loadingCtrl.create({ });
+    loading.present();
 
     this.api.buyProduct(id,cost)
     .then( e => {
       console.log(e);
-/*       loading.dismiss();
+      loading.dismiss();
       const alert = this.alertCtrl.create({
         title: "Messaggio",
         subTitle: "Acquisto eseguito!",
         buttons: ['Prosegui']
       });
-      alert.present(); */
-  /*     this.goToHome(); */
+      alert.present();
+      this.goToHome();
     })
     .catch( e => {
       console.log(e);
