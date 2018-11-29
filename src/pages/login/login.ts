@@ -40,7 +40,7 @@ export class LoginPage {
     console.log("Login");
     this.api.login(this.login.username, this.login.password)
       .then(data => {
-        switch (data.server_status) {
+        switch (data.status) {
           case 200:
             this.viewUtils.showToast(this.toastCtrl, "autenticazione riuscita");
             this.navCtrl.setRoot(HomePage);

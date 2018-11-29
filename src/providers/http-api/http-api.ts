@@ -11,6 +11,8 @@ import { StorageProvider } from '../storage/storage';
 import { ConfigProvider } from '../config/config';
 import _ from 'lodash';
 
+import * as sha from 'sha.js';
+
 
 
 let basePath = configs.API_BASE;
@@ -36,13 +38,16 @@ export class HttpApiProvider implements ApiInterface {
   _getOpts_json = () => ({ headers : { "Content-Type": this.cfg.config.JSON_CONTENT_TYPE } })
 
   login(username:string, password:string): Promise<any> {
-    return this.http.post(`${basePath}/sm_auth.php`, {
+
+    password = sha('sha256').update(password).digest('hex');
+
+    return this.http.post(`${basePath}/user/login`, {
       "username": username,
-      "pwd": password
+      "password": password
     }).toPromise()
       .then(data => {
-        if (_.get(data, "server_status") == 200) {
-          this.storage.set(this.cfg.config.AUTH_TOKEN, _.get(data, "items.token"));
+        if (_.get(data, "status") == 200) {
+          this.storage.set(this.cfg.config.AUTH_TOKEN, _.get(data, "result"));
           this.storage.set(this.cfg.config.AUTH_USERNAME, username);
         }
         return data;
