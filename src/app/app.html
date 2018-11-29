@@ -1,5 +1,5 @@
 <!-- [when]="shouldShow()" -->
-<!-- <ion-split-pane> -->
+<ion-split-pane [when]="shouldShow()">
   
   <ion-menu [content]="content">
     <ion-header>
@@ -25,4 +25,4 @@
   <!-- <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav> -->
   <ion-nav [root]="rootPage" #content main></ion-nav>
 
-<!-- </ion-split-pane> -->
+</ion-split-pane>

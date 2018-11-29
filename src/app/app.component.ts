@@ -73,8 +73,8 @@ export class MyApp {
     .catch( e => console.log(e));
   }
 
-  // shouldShow(isOpen = true) {
-  //   return isOpen;
-  // }
+   shouldShow(isOpen = true) {
+     return this.isAuthenticated();
+   }
 
 }
