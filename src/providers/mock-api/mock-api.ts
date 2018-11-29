@@ -8,6 +8,7 @@ import { MockData } from './mock/mock-data';
 
 @Injectable()
 export class MockApiProvider implements ApiInterface {
+ 
   postMarcaEvento(idEvento): Promise<any> {
     throw new Error("Method not implemented.");
   }
@@ -41,41 +42,10 @@ export class MockApiProvider implements ApiInterface {
     return Promise.resolve("Hai effettuato la logout");
   }
     
-  getRapporti(): Promise<any> {
-    return Promise.resolve(this.mockData.LISTARAPPORTI);
-  }
 
-  getContent(uri:string): Promise<any> {
+  sendLocalizationCode(deviceCode): Promise<any> {
     throw new Error("Method not implemented.");
   }
-
-  post(uri:string, data:any): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-
-  getFilteringSelectContent(tab: string, campoValue: string, campoText: string, filtroSQL: string, orderBy: string, start: number, count: number, label: string): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-  searchEntries(term: any, urlAction: string) {
-    throw new Error("Method not implemented.");
-  }
-
-  getDettaglioRapporto(): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-
-  getContattiCRM(username:string, from:string, to:string): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-
-  getListaRapporti(idPratica?: string): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-
-  printPreventivo(idPratica?: string): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-
   
 }
 

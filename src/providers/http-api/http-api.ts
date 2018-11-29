@@ -12,12 +12,13 @@ import { ConfigProvider } from '../config/config';
 import _ from 'lodash';
 
 
+
 let basePath = configs.API_BASE;
-let filteringSelectPath = `${basePath}${configs.API_FILTERING_SELECT}`;
 
 
 @Injectable()
 export class HttpApiProvider implements ApiInterface {
+
  
 
   token : string = "";
@@ -29,7 +30,9 @@ export class HttpApiProvider implements ApiInterface {
 
   }
 
-  _getOpts = () => ({ headers : { "Auth-Key": this.storage.get(this.cfg.config.AUTH_TOKEN) } })
+  _getOpts_old = () => ({ headers : { "Auth-Key": this.storage.get(this.cfg.config.AUTH_TOKEN) } })
+
+  _getOpts = () => ({ headers : { "Content-Type": this.cfg.config.URL_FORM_ENCODED } })
 
   login(username:string, password:string): Promise<any> {
     return this.http.post(`${basePath}/sm_auth.php`, {
@@ -54,59 +57,20 @@ export class HttpApiProvider implements ApiInterface {
     return Promise.resolve();
   }
   
-  getRapporti(idEnte ?: string): Promise<any> {
-    return this.http.get(`${basePath}/sm_proto.php?type=lista_rapporti${idEnte?'&id_entita='+idEnte:''}`,this._getOpts()).toPromise();
-  }
 
-  getContent(uri:string): Promise<any> {
-    return this.http.get(`${basePath}${uri}`,this._getOpts()).toPromise();
-  }
+  sendLocalizationCode(deviceCode): Promise<any> {
+    let user_token = this.storage.get(this.cfg.config.AUTH_TOKEN) || btoa("Prova");
 
-  post(uri:string, data:any): Promise<any> {
-    return this.http.post(`${basePath}${uri}`, data, this._getOpts()).toPromise();
-  }
+    let body = {
+      "trash_token": deviceCode,
+      "user_token": user_token,
+    }
 
-  getFilteringSelectContent (
-    tab:string,
-    campoValue:string,
-    campoText:string,
-    filtroSQL:string,
-    orderBy:string,
-    start:number = 0,
-    count:number = 100,
-    label:string = "**" ) : Promise<any> {
-    let uri = `${filteringSelectPath}?tab=${tab}&campoValue=${campoValue}&campoText=${campoText}&filtroSql=${filtroSQL}&orderBy=${orderBy}&label=${label}&start=${start}&count=${count}`;
-    return this.http.get(encodeURI(uri)).toPromise();
-  }
+    console.log(body);
 
-  searchEntries(term, urlAction: string) {
-    return this.http.get(urlAction + term).map(res => res);
-  }
+    return Promise.resolve("aa");
 
-  getDettaglioRapporto(): Promise<any> {
-    throw new Error("Method not implemented.");
-  }
-
-  getContattiCRM(username:string, from:string, to:string): Promise<any> {
-    return this.http.get(`${basePath}/sm_proto.php?type=lista_contatti_crm&username=${username}&from=${from}&to=${to}`,this._getOpts()).toPromise();
-  }
-
-  getListaRapporti(idPratica?: string): Promise<any> {
-    return this.http.get(`${basePath}/sm_proto.php?type=lista_rapporti_per_pratica&id_pratica=${idPratica}`,this._getOpts()).toPromise();
-  }
-
-  printPreventivo(idPratica?: string): Promise<any> {
-    let obj : Object = this._getOpts;
-    _.set(obj,"responseType","text");
-    return this.http.get(`/confidisystema/wfc/wfc_stampa_preventivo.php?IdPratica=${idPratica}`,obj).toPromise();
-  }
-  
-  getLastAlert(): Promise<any> {
-    return this.http.get(`${basePath}/sm_proto.php?type=lista_avvisi&limit=10`,this._getOpts()).toPromise();
-  }
-
-  postMarcaEvento(idEvento): Promise<any> {
-    return this.http.get(`${basePath}/sm_proto.php?type=marca_evento&id_evento=${idEvento}`,this._getOpts()).toPromise();
+    /* return this.http.post(`${basePath}/localization`,body,this._getOpts()).toPromise(); */
   }
  
 

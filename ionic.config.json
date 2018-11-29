@@ -4,5 +4,11 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path": "/app",
+      "proxyUrl": " http://90.147.188.54/app/"
+    }
+  ]
 }

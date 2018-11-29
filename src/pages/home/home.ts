@@ -2,16 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { ApiInterface, ApiInterfaceToken } from '../../providers/api.interface';
 import { ViewUtilsProvider } from '../../providers/view-utils/view-utils';
-import { EntiPage } from '../enti/enti';
-import { RapportiPage } from '../rapporti/rapporti';
-import { ContentPage } from '../content/content';
-import { DettaglioRapportoPage } from '../dettaglio-rapporto/dettaglio-rapporto';
 import { StorageProvider } from '../../providers/storage/storage';
 import { ConfigProvider } from '../../providers/config/config';
-import { PreventivoScontiPage } from '../preventivo-sconti/preventivo-sconti';
-import { ContattiCrmPage } from '../contatti-crm/contatti-crm';
-import { CustomComponent } from '../../components/custom/custom';
-import { AlertPage } from '../alert/alert';
+
+import { LocalizationPage } from '../localization/localization';
 
 
 
@@ -33,8 +27,8 @@ export class HomePage {
 
   }
 
-  goToEnti(){
-    this.navCtrl.push(EntiPage);
+  localize(){
+    this.navCtrl.push(LocalizationPage);
   }
 
   goToAlert(){

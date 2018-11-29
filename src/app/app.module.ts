@@ -17,26 +17,12 @@ import { HttpApiProvider } from '../providers/http-api/http-api';
 import { ApiInterface, ApiInterfaceToken } from '../providers/api.interface';
 import { ViewUtilsProvider } from '../providers/view-utils/view-utils';
 import { LoginPage } from '../pages/login/login';
-import { EntiPage } from '../pages/enti/enti';
-import { RapportiPage } from '../pages/rapporti/rapporti';
 import { UtilsProvider } from '../providers/utils/utils';
-import { DettaglioRapportoPage } from '../pages/dettaglio-rapporto/dettaglio-rapporto';
 
 import { ComponentsModule } from '../components/components.module';
-import { ContentPage } from '../pages/content/content';
-import { CMPFilteringSelectPage } from '../pages/cmp-filtering-select/cmp-filtering-select';
-import { DettaglioEntePage } from '../pages/dettaglio-ente/dettaglio-ente';
-import { PreventivoScontiPage } from '../pages/preventivo-sconti/preventivo-sconti';
-import { ContattiCrmPage } from '../pages/contatti-crm/contatti-crm';
-import { DynamicComponent } from '../components/dynamic/dynamic';
-import { CustomComponent } from '../components/custom/custom';
-import { DettaglioPraticaPage } from '../pages/dettaglio-pratica/dettaglio-pratica';
-import { ListaDocumentiPage } from '../pages/lista-documenti/lista-documenti';
-import { ListaValutazioniPage } from '../pages/lista-valutazioni/lista-valutazioni';
-import { CaricaValutazionePage } from '../pages/carica-valutazione/carica-valutazione';
-import { AlertPage } from '../pages/alert/alert';
+import { LocalizationPage } from '../pages/localization/localization';
 
-let isDev = true;
+let isDev = false;
 
 @NgModule({
   declarations: [
@@ -44,19 +30,7 @@ let isDev = true;
     HomePage,
     ListPage,
     LoginPage,
-    EntiPage,
-    RapportiPage,
-    DettaglioRapportoPage,
-    ContentPage,
-    CMPFilteringSelectPage,
-    DettaglioEntePage,
-    PreventivoScontiPage,
-    ContattiCrmPage,
-    ListaDocumentiPage,
-    DettaglioPraticaPage,
-    ListaValutazioniPage,
-    CaricaValutazionePage,
-    AlertPage
+    LocalizationPage
   ],
   imports: [
     BrowserModule,
@@ -70,21 +44,7 @@ let isDev = true;
     HomePage,
     ListPage,
     LoginPage,
-    EntiPage,
-    RapportiPage,
-    DettaglioRapportoPage,
-    ContentPage,
-    CMPFilteringSelectPage,
-    DettaglioEntePage,
-    PreventivoScontiPage,
-    ContattiCrmPage,
-    DynamicComponent,
-    CustomComponent,
-    ListaDocumentiPage,
-    DettaglioPraticaPage,
-    ListaValutazioniPage,
-    CaricaValutazionePage,
-    AlertPage
+    LocalizationPage
   ],
   providers: [
     StatusBar,
