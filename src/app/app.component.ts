@@ -14,6 +14,7 @@ import { LocalizationPage } from '../pages/localization/localization';
 import { WalletPage } from '../pages/wallet/wallet';
 import { ListaProdottiPage } from '../pages/lista-prodotti/lista-prodotti';
 import { UtilsProvider } from '../providers/utils/utils';
+import { RankingPage } from '../pages/ranking/ranking';
 
 @Component({
   templateUrl: 'app.html'
@@ -45,7 +46,8 @@ export class MyApp {
       { title: 'Wallet', component: HomePage },
       { title: 'Associa', component: LocalizationPage },/* 
       { title: 'Portafoglio', component: WalletPage }, */
-      { title: 'Lista prodotti', component: ListaProdottiPage }
+      { title: 'Lista prodotti', component: ListaProdottiPage },
+      { title: 'Classifiche', component: RankingPage },
 
      /*  { title: 'List', component: ListPage } */
     ];

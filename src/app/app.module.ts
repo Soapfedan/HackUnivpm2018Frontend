@@ -25,6 +25,7 @@ import { WalletPage } from '../pages/wallet/wallet';
 import { DettaglioProdottoPage } from '../pages/dettaglio-prodotto/dettaglio-prodotto';
 import { ListaProdottiPage } from '../pages/lista-prodotti/lista-prodotti';
 import { SignupPage } from '../pages/signup/signup';
+import { RankingPage } from '../pages/ranking/ranking';
 
 let isDev = false;
 
@@ -38,7 +39,8 @@ let isDev = false;
     WalletPage,
     DettaglioProdottoPage,
     ListaProdottiPage,
-    SignupPage
+    SignupPage,
+    RankingPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ let isDev = false;
     WalletPage,
     DettaglioProdottoPage,
     ListaProdottiPage,
-    SignupPage
+    SignupPage,
+    RankingPage
   ],
   providers: [
     StatusBar,

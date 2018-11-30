@@ -40,10 +40,10 @@
           <ion-card-header>
                   <ion-row align-items-center>
                     <ion-item>
-                      <ion-col item-content col-6>
+                      <ion-col text-wrap item-content col-8>
                           {{p.name}}    
                       </ion-col>
-                      <ion-col col-6 item-content>
+                      <ion-col col-4 item-content>
                         <div *ngIf="viewUtils.getPropertyOrDefault(p,'wcn') == 'Vetro'" class="credits-wallet">
                            <img class="categ-img" src="assets/imgs/bottle.png" alt="img" />
                         </div>
@@ -64,7 +64,7 @@
                 <ion-item>
                   <ion-col col-6 item-content>
                     <div class="credits-wallet">
-                      <h2>{{viewUtils.getPropertyOrDefault(p,'cost')}}</h2> <img src="assets/imgs/coins.png" alt="img" />
+                      <h2>{{viewUtils.getPropertyOrDefault(p,'cost')}} &nbsp;</h2> <img src="assets/imgs/coins.png" alt="img" />
                     </div>
                   </ion-col>
                   <ion-col item-content col-6>
@@ -82,9 +82,9 @@
                     </div>
                   </ion-col>
                   <ion-col col-6 item-content>
-                    <ion-row align-items-center>
+<!--                     <ion-row align-items-center>
                       <ion-icon name="ios-document" item-start></ion-icon> Descrizione
-                    </ion-row>
+                    </ion-row> -->
                     <ion-row align-items-center>
                       {{viewUtils.getPropertyOrDefault(p,'description')}}
                     </ion-row>
