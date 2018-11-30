@@ -90,6 +90,10 @@ export class HomePage {
     this.navCtrl.push(DettaglioProdottoPage, { "id": id, "isTrash": isTrash });
   }
 
+  goToLink(){
+    this.navCtrl.setRoot(LocalizationPage);
+  }
+
 
 
 }

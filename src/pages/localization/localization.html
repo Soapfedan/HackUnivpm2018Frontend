@@ -17,17 +17,27 @@
 
 
 <ion-content padding>
-  <ng-container *ngIf="!flag && !loading">
+  <ng-container *ngIf="webOk">
+      <div id="loadingMessage"></div>
+      <canvas id="canvas" hidden></canvas>
+      <div id="output" hidden>
+        <div id="outputMessage"></div>
+        <div hidden><b>Data:</b> <span id="outputData"></span></div>
+      </div>
+  </ng-container>
+
+  <ng-container *ngIf="!flag && !loading && !webOk">
     <p>Puoi inviare il codice</p>
-    <button ion-button (click)="sendCode()">Invia il codice</button>
+    <button ion-button (click)="sendCode('trash')">Invia il codice</button>
   </ng-container>
   <ng-container *ngIf="flag && !loading">
-      <p>Sei collegato ad un cestino</p>
-    </ng-container>
+    <p>Sei collegato ad un cestino</p>
+  </ng-container>
 
-    <div class="list-section-loadmore" *ngIf="loading">
+  <div class="list-section-loadmore" *ngIf="loading">
     <!-- Caricamento dati... -->
     <ion-spinner name="crescent"></ion-spinner>
-    </div>
-    
+  </div>
+
+
 </ion-content>
