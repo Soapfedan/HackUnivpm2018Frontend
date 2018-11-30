@@ -131,11 +131,11 @@ loadData(){
       })
 
       let uptrans =  transactions.filter( t => {
-        return t.trash_token != null;
+        return t.trash_token == null;
       })
 
       let rectrans =  transactions.filter( t => {
-        return t.trash_token == null;
+        return t.trash_token != null;
       })
 
       _.set(this.wallet,"transaction",transactions);
