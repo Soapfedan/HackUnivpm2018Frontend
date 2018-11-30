@@ -27,4 +27,6 @@ export interface ApiInterface {
 
     buyProduct(id,cost): Promise<any>;
 
+    signup(user): Promise<any>;
+
 }

@@ -88,6 +88,10 @@ export class MockApiProvider implements ApiInterface {
   checkLocalization(): Promise<any> {
     throw new Error("Method not implemented.");
   }
+
+  signup(user: any): Promise<any> {
+    throw new Error("Method not implemented.");
+  }
  
   
 }

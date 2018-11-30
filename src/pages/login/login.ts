@@ -5,6 +5,7 @@ import { ViewUtilsProvider } from '../../providers/view-utils/view-utils';
 import { HomePage } from '../home/home';
 import { StorageProvider } from '../../providers/storage/storage';
 import { ConfigProvider } from '../../providers/config/config';
+import { SignupPage } from '../signup/signup';
 
 
 
@@ -60,7 +61,7 @@ export class LoginPage {
 
 
   onSignup(){
-    console.log("Signup");
+    this.navCtrl.setRoot(SignupPage);
   }
 
   

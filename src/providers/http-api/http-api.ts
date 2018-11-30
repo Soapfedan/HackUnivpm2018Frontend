@@ -20,6 +20,7 @@ let basePath = configs.API_BASE;
 
 @Injectable()
 export class HttpApiProvider implements ApiInterface {
+
  
 
   token : string = "";
@@ -111,6 +112,18 @@ export class HttpApiProvider implements ApiInterface {
     let user_token = this.storage.get(this.cfg.config.AUTH_TOKEN) || btoa("Prova");
 
     return this.http.get(`${basePath}/localization/check/${user_token}`).toPromise();
+  }
+
+
+  signup(user: any): Promise<any> {
+
+    let password = _.get(user,"password","");
+
+    password = sha('sha256').update(password).digest('hex');
+
+    _.set(user,"password",password);
+
+    return this.http.post(`${basePath}/user/register`,user,this._getOpts_json()).toPromise();
   }
  
  

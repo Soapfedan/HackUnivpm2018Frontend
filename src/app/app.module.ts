@@ -24,6 +24,7 @@ import { LocalizationPage } from '../pages/localization/localization';
 import { WalletPage } from '../pages/wallet/wallet';
 import { DettaglioProdottoPage } from '../pages/dettaglio-prodotto/dettaglio-prodotto';
 import { ListaProdottiPage } from '../pages/lista-prodotti/lista-prodotti';
+import { SignupPage } from '../pages/signup/signup';
 
 let isDev = false;
 
@@ -36,7 +37,8 @@ let isDev = false;
     LocalizationPage,
     WalletPage,
     DettaglioProdottoPage,
-    ListaProdottiPage
+    ListaProdottiPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ let isDev = false;
     LocalizationPage,
     WalletPage,
     DettaglioProdottoPage,
-    ListaProdottiPage
+    ListaProdottiPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
