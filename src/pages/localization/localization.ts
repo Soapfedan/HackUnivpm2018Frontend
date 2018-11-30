@@ -41,7 +41,9 @@ export class LocalizationPage {
 
   ngOnDestroy() {
     console.log("Destroy Localization");
-    this.tracks[0].stop();
+    if(!_.isEmpty(this.tracks)){
+      this.tracks[0].stop();
+    }
   }
 
   scanQRCode(){
