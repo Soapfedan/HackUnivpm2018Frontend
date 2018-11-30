@@ -12,10 +12,10 @@
     </button>
     <ion-title>Collegati con un dispositivo</ion-title>
     <ion-buttons end>
-        <button (click)="goToHome()" ion-button>
-          <ion-icon name="home" class="large-icon"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button (click)="goToHome()" ion-button>
+        <ion-icon name="home" class="large-icon"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 
@@ -25,7 +25,7 @@
 <ion-content padding>
   <ng-container *ngIf="webOk">
     <div class="web-cam">
-      <p>Scannerizza il QR Code per associarti al cestino</p>
+      <p *ngIf="!flag && !loading">Scannerizza il QR Code per associarti al cestino</p>
       <div id="loadingMessage"></div>
       <canvas id="canvas" hidden></canvas>
       <div id="output" hidden>
@@ -40,7 +40,11 @@
     <button ion-button (click)="sendCode('trash')">Invia il codice</button>
   </ng-container>
   <ng-container *ngIf="flag && !loading">
-    <p>Sei collegato ad un cestino</p>
+      <p class="linked">
+    <ion-icon class="check-link" name="ios-checkbox"></ion-icon>
+    <br>
+        
+          Sei collegato ad un cestino</p>
   </ng-container>
 
   <div class="list-section-loadmore" *ngIf="loading">

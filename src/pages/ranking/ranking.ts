@@ -50,7 +50,7 @@ export class RankingPage {
           ]
         },
         {
-          "id": "Ancona09",
+          "id": "Ancona02",
           "coin": 1856,
           "users":[
             {

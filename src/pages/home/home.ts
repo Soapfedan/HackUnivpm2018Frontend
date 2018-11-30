@@ -149,5 +149,9 @@ loadData(){
     .catch(e => console.log(e))
 }
 
+reload(){
+  this.navCtrl.setRoot(HomePage);
+}
+
 
 }

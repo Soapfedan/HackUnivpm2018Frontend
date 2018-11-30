@@ -1,16 +1,15 @@
-
 <ion-header>
 
   <ion-navbar>
-      <button *ngIf="utilsProvider.isMobile()" ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button *ngIf="utilsProvider.isMobile()" ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Classifiche</ion-title>
     <ion-buttons end>
-        <button (click)="goToHome()" ion-button>
-          <ion-icon name="home" class="large-icon"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button (click)="goToHome()" ion-button>
+        <ion-icon name="home" class="large-icon"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -21,33 +20,39 @@
     <ion-card *ngFor="let r of ranks">
 
       <ion-card-header>
-        {{r.city}}
+        <h1>{{r.city}}</h1>
       </ion-card-header>
-    
+
       <ion-card-content>
         <ion-list>
           <ng-container *ngFor="let b of r.bins">
             <ion-col col-12 item-content>
-                
-                    {{b.id}}   
+              <ion-row>
                 <div class="credits-wallet">
-                  <h2>{{viewUtils.getPropertyOrDefault(b,'coin')}} &nbsp;</h2> <img src="assets/imgs/coins.png" alt="img" />
+                  <h2> {{b.id}}</h2>
                 </div>
-              </ion-col>
+
+              </ion-row>
+              <ion-row>
+                <div class="credits-wallet">
+                  <h2> {{viewUtils.getPropertyOrDefault(b,'coin')}} &nbsp;</h2> <img src="assets/imgs/coins.png" alt="img" />
+                </div>
+              </ion-row>
+            </ion-col>
             <ion-list padding>
               <ng-container *ngFor="let u of b.users">
-                  <button ion-item>
-                      <ion-icon name="contact" item-start></ion-icon>
-                      {{u.name}} {{u.coin}}
-                    </button>
+                <button ion-item>
+                  <ion-icon name="contact" item-start></ion-icon>
+                  {{u.name}} {{u.coin}}
+                </button>
               </ng-container>
             </ion-list>
           </ng-container>
-          </ion-list>
-         
-    
+        </ion-list>
+
+
       </ion-card-content>
-    
+
     </ion-card>
   </ion-list>
 </ion-content>

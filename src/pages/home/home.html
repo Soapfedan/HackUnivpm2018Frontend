@@ -52,8 +52,13 @@
             <ion-grid>
               <ion-row>
                 <ion-item>
-                  <ion-col item-content col-12>
+                  <ion-col item-content col-10>
                     <h3>Lista di tutte le transazioni</h3>
+                  </ion-col>
+                  <ion-col item-content col-2>
+                      <button class="refresh" (click)="reload()">
+                          <ion-icon name="md-refresh" class="large-icon"></ion-icon>
+                        </button>
                   </ion-col>
                 </ion-item>
               </ion-row>
