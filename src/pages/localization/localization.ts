@@ -19,6 +19,7 @@ export class LocalizationPage {
   flag: boolean = false;
   loading: boolean = true;
   webOk: boolean = true;
+  tracks: any;
 
   capture: boolean = false;
 
@@ -38,6 +39,11 @@ export class LocalizationPage {
    
   }
 
+  ngOnDestroy() {
+    console.log("Destroy Localization");
+    this.tracks[0].stop();
+  }
+
   scanQRCode(){
     var page = this;
     var video: any = document.createElement("video");
@@ -48,11 +54,11 @@ export class LocalizationPage {
     var outputMessage = document.getElementById("outputMessage");
     var outputData = document.getElementById("outputData");
 
-    var tracks;
+/*     var tracks; */
     // Use facingMode: environment to attemt to get the front camera on phones
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
       video.srcObject = stream;
-      tracks = stream.getVideoTracks();
+      page.tracks = stream.getVideoTracks();
       video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
       video.play();
       requestAnimationFrame(tick);
@@ -78,7 +84,7 @@ export class LocalizationPage {
           outputData.parentElement.hidden = false;
           outputData.innerText = code.data;
           video.pause();
-          tracks[0].stop();
+          page.tracks[0].stop();
           console.log(code.data);
           page.capture = true;
           page.navCtrl.setRoot(HomePage);
