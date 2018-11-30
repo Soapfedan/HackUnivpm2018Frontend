@@ -31,7 +31,7 @@ export class LoginPage {
     private cfg: ConfigProvider
   ) {
     this.login.username = storage.get(cfg.config.AUTH_USERNAME) || "user";
-    this.login.password = storage.get(cfg.config.AUTH_USERNAME) || "password";
+    this.login.password = "pwd";
   }
 
   
