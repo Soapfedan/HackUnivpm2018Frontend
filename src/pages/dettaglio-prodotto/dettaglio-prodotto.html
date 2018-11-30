@@ -1,9 +1,15 @@
-
 <ion-header>
 
   <ion-navbar>
     <ion-title>Dettaglio {{title}}</ion-title>
+    <ion-buttons end>
+      <button (click)="goToHome()" ion-button>
+        <ion-icon name="home" class="large-icon"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
+
 
 </ion-header>
 
@@ -12,50 +18,68 @@
 
   <ng-container *ngIf="isTrash && content != undefined">
 
-      <ion-list>
-          <ion-row>
-            <ion-item>
-              <ion-col col-12 item-content>
-                <ion-icon name="ios-card" item-start></ion-icon>
-                Tipologia {{viewUtils.getPropertyOrDefault(content,'name')}}
-              </ion-col>
-            </ion-item>
-            <ion-item>
-              <ion-col col-12 item-content>
-                <ion-icon name="ios-document" item-start></ion-icon>
+    <ion-list>
+      <ion-row>
+        <ion-item>
+          <ion-col col-12 item-content>
+              <ion-row align-items-center>
+                  <ion-icon name="ios-card" item-start></ion-icon> Tipologia
+              </ion-row>
+              <ion-row align-items-center>
+                {{viewUtils.getPropertyOrDefault(content,'name')}}
+              </ion-row>
+          </ion-col>
+        </ion-item>
+        <ion-item>
+          <ion-col col-12 item-content>
+              <ion-row align-items-center>
+                  <ion-icon name="ios-document" item-start></ion-icon> Descrizione
+              </ion-row>
+              <ion-row align-items-center>
                 {{viewUtils.getPropertyOrDefault(content,'description')}}
-              </ion-col>
-            </ion-item>
-          </ion-row>
-        </ion-list>
-        <img alt="Un'immagine" class="product-img" src="{{viewUtils.getPropertyOrDefault(content,'image','')}}" />
+              </ion-row>
+           
+          </ion-col>
+        </ion-item>
+      </ion-row>
+    </ion-list>
+    <img alt="Un'immagine" class="product-img" src="{{viewUtils.getPropertyOrDefault(content,'image','')}}" />
 
   </ng-container>
 
   <ng-container *ngIf="!isTrash && content != undefined">
-      <ion-list>
-          <ion-row>
-            <ion-item>
-              <ion-col col-12 item-content>
-                <ion-icon name="ios-card" item-start></ion-icon>
-                Costo {{viewUtils.getPropertyOrDefault(content,'cost')}}
-              </ion-col>
-            </ion-item>
-            <ion-item>
-              <ion-col col-12 item-content>
-                <ion-icon name="ios-document" item-start></ion-icon>
-                {{viewUtils.getPropertyOrDefault(content,'description')}}
-              </ion-col>
-            </ion-item>
-            <ion-item>
-              <ion-col col-12 item-content>
-                <ion-icon name="ios-trash" item-start></ion-icon>
-                {{viewUtils.getPropertyOrDefault(content,'wcn')}}
-              </ion-col>
-            </ion-item>
-          </ion-row>
-        </ion-list>
-        <img alt="Un'immagine" class="product-img" src="{{viewUtils.getPropertyOrDefault(content,'image','')}}" />
+    <ion-list>
+      <ion-row>
+        <ion-item>
+          <ion-col col-12 item-content>
+            <div class="credits-wallet">
+              <h2>{{viewUtils.getPropertyOrDefault(content,'cost')}}</h2> <img src="assets/imgs/coins.png" alt="img" />
+            </div>
+          </ion-col>
+        </ion-item>
+        <ion-item>
+          <ion-col col-12 item-content>
+            <ion-row align-items-center>
+              <ion-icon name="ios-document" item-start></ion-icon> Descrizione
+            </ion-row>
+            <ion-row align-items-center>
+              {{viewUtils.getPropertyOrDefault(content,'description')}}
+            </ion-row>
+          </ion-col>
+        </ion-item>
+        <ion-item>
+          <ion-col col-12 item-content>
+            <ion-row align-items-center>
+              <ion-icon name="ios-trash" item-start></ion-icon> Tipologia
+            </ion-row>
+            <ion-row align-items-center>
+              {{viewUtils.getPropertyOrDefault(content,'wcn')}}
+            </ion-row>
+          </ion-col>
+        </ion-item>
+      </ion-row>
+    </ion-list>
+    <img alt="Un'immagine" class="product-img" src="{{viewUtils.getPropertyOrDefault(content,'image','')}}" />
 
   </ng-container>
 

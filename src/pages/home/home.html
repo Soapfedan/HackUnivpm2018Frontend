@@ -12,14 +12,14 @@
         <ion-icon name="md-camera" class="large-icon"></ion-icon>
       </button>
     </ion-buttons>
+
+
   </ion-navbar>
 
   <ion-toolbar no-border-top>
     <ion-grid class="home-grid">
       <ion-row>
-        <ion-buttons>
-          <ion-badge item-end>Crediti {{wallet.credit}}</ion-badge>
-        </ion-buttons>
+        <h2 class="credits-wallet"> {{wallet.credit}} <img src="assets/imgs/coins.png" alt="img" /> </h2>
       </ion-row>
       <ion-row>
         <ion-segment [(ngModel)]="section">

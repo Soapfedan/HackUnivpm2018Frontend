@@ -4,6 +4,7 @@ import { ApiInterface, ApiInterfaceToken } from '../../providers/api.interface';
 
 import _ from 'lodash';
 import { ViewUtilsProvider } from '../../providers/view-utils/view-utils';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-dettaglio-prodotto',
@@ -74,6 +75,10 @@ export class DettaglioProdottoPage {
 
   getWaste(id){
     return this.api.getTrashDetail(id);
+  }
+
+  goToHome(){
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

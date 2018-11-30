@@ -218,6 +218,23 @@ page-home {
   padding-bottom: 20px;
 }
 
+.credits-row{
+  text-align: center;
+}
+
+.credits-wallet{
+  display: inline-block;
+  text-align: center;
+  font-size: 40px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+}
+
+.credits-wallet img {
+  max-width: 32px;
+  vertical-align: middle;
+}
+
 .section-footer {
   background-color: #00294b;
   color: #b3b3b3;

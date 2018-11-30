@@ -129,4 +129,8 @@ export class LocalizationPage {
     })
   }
 
+  goToHome(){
+    this.navCtrl.setRoot(HomePage);
+  }
+
 }
