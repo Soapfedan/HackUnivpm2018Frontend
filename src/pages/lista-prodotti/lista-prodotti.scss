@@ -1,8 +1,17 @@
 page-lista-prodotti {
 
+    .ion-item{
+      padding-left: 0px;
+    }
+
     .product-img{
         width: 100px;
         height: 100px;
+      }
+
+      .categ-img{
+        display: inline-block;
+        width: 100% !important;
       }
 
       .buy-button{
