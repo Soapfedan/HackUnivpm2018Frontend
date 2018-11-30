@@ -1,10 +1,8 @@
 page-home {
 
   .section-products {
-    border-radius: 25px;
-    background: white;
+/*     border-radius: 25px; */
     padding: 10px;
-    margin: 20px;
   }
 
 
@@ -40,7 +38,7 @@ page-home {
 
   .home-content {
     // background-color: #002f55;
-    background: linear-gradient(#4989cf, #b6d7ea);
+   /*  background: linear-gradient(#4989cf, #b6d7ea); */
   }
 
   .home-button-background {
@@ -66,8 +64,12 @@ page-home {
   }
 
   .home-first-row {
-    padding-top: 25px !important;
+/*     padding-top: 25px !important; */
     padding-bottom: 0px !important;
+  }
+
+  .larger {
+    font-size: 30px;
   }
 
   .home-second-row {

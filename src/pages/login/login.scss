@@ -1,4 +1,8 @@
 page-login {
+
+    @media (max-width: 480px) {
+      
+    }
     .image-logo {
         text-align: center;
 
@@ -72,20 +76,19 @@ page-login {
         box-shadow: none !important;
       }
     
-      ion-content>.scroll-content {
-        //background-color: rgb(73, 137, 207);
-        background: linear-gradient(#4989cf, #b6d7ea);
-        padding-right: 20px;
-        padding-left: 20px;
+     /*   ion-content>.scroll-content {
+        background: #d6f9ff;
+        background: -moz-linear-gradient(top, #d6f9ff 0%, #9ee8fa 100%);
+        background: -webkit-linear-gradient(top, #d6f9ff 0%,#9ee8fa 100%);
+        background: linear-gradient(to bottom, #d6f9ff 0%,#9ee8fa 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6f9ff', endColorstr='#9ee8fa',GradientType=0 );
+
+
       }
-    
+   
       ion-content>.scroll-content>ion-grid {
-        background-color: white;
-        padding-bottom: 50px;
-        box-shadow: 5px 10px #1223359c;
-        padding-right: 10px;
-        padding-left: 10px;
-      }
+        background-color:traspa;
+      } */
 
       .item-border{
         border-bottom-color: #dbdbdb;

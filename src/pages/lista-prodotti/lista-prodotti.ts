@@ -53,7 +53,7 @@ export class ListaProdottiPage {
       this.products.forEach( prod => {
         promises.push(this.api.getTrashDetail(_.get(prod,"waste_id")))
       });
-      loading.dismiss();
+
       return Promise.all(promises);
 
     })
@@ -71,6 +71,7 @@ export class ListaProdottiPage {
     .then( content => { 
       this.wallet = _.get(content,"result",this.wallet);
       console.log(content);
+      loading.dismiss();
     })
     .catch( e => {
       console.log(e);

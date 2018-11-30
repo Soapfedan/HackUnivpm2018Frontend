@@ -5,178 +5,193 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-title>Home</ion-title>
+    <ion-title>Wallet</ion-title>
 
 
 
     <ion-buttons end>
-        <ion-badge item-end>Credito {{wallet.credit}}</ion-badge>
+      <ion-badge item-end>Credito {{wallet.credit}}</ion-badge>
     </ion-buttons>
 
     <ion-buttons end>
-        <button (click)="goToLink()" ion-button >
-          <ion-icon name="md-camera" class="large-icon"></ion-icon>
-        </button>
-      </ion-buttons>
-    
-
+      <button (click)="goToLink()" ion-button>
+        <ion-icon name="md-camera" class="large-icon"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <div class="whois">Benvenuto, <b>{{username}}</b></div>
+
+    <ion-segment [(ngModel)]="section">
+      <ion-segment-button value="all">
+        Tutte
+      </ion-segment-button>
+      <ion-segment-button value="recycle">
+        Recycle
+      </ion-segment-button>
+      <ion-segment-button value="upcycle">
+        Upcycle
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
+
+
 <ion-content class="home-content">
 
-  <div class="home-button-background">
-
-    <div class="home-section">
-
-      <div class="whois">Benvenuto, <b>{{username}}</b></div>
-
-      <ion-grid class="home-first-row">
-        <ion-row>
-          <!--   <ion-col offset-3 col-3>
-              <div block class="square" (click)="localize()">
-                <ion-icon class="icon-create-request" name="ios-barcode"></ion-icon>
-                <h3>Associa</h3>
-                <h3>Dispositivo</h3>
-              </div>
-            </ion-col>
-            
-            <ion-col col-3>
-              <div block class="square" (click)="goToWallet()">
-                  <ion-icon class="icon-create-offer" name="ios-card"></ion-icon>
-                  <h3>Portafoglio</h3>
-                  <h3>&nbsp;</h3>
-                </div>
-            </ion-col> -->
-          <!--  
-          </ion-row>
-        </ion-grid>
-    
+      <div [class.hide]="section != 'all'">
+          <ion-grid>
+              <ion-row>
+                <ion-col offset-md-3 col-md-6 col-12>
+                  <div class="section-products">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-item>
+                          <ion-col item-content col-12>
+                            <h3>Lista di tutte le transazioni</h3>
+                          </ion-col>
+                        </ion-item>
+                      </ion-row>
+                    </ion-grid>
+          
+          
+          
+                    <ng-container *ngIf="wallet != undefined && wallet.transaction != undefined && wallet.transaction.length > 0">
+                      <ion-grid>
+                        <ion-row responsive-sm *ngFor="let t of wallet.transaction">
+                          <ion-item>
+                            <ion-col item-content col-1>
+                              <ion-icon *ngIf="t.trash_token != null" name="ios-trash"></ion-icon>
+                              <ion-icon *ngIf="t.trash_token == null" name="md-cart"></ion-icon>
+                            </ion-col>
+                            <ion-col text-wrap item-content col-5>
+                              <ion-label>{{t.wcn}}</ion-label>
+                            </ion-col>
+                            <ion-col item-content col-4>
+                              <ion-label class="positive" *ngIf="t.trash_token != null">+ {{t.credit}} </ion-label>
+                              <ion-label class="negative" *ngIf="t.trash_token == null">- {{t.credit}} </ion-label>
+                            </ion-col>
+                            <ion-col item-content col-2>
+                              <ion-icon *ngIf="t.trash_token != null" class="larger" (click)="goToDetail(t.product_id,true)" name="ios-arrow-dropright-circle-outline"></ion-icon>
+                              <ion-icon *ngIf="t.trash_token == null" class="larger" (click)="goToDetail(t.product_id,false)"
+                                name="ios-arrow-dropright-circle-outline"></ion-icon>
+                            </ion-col>
+                          </ion-item>
+                        </ion-row>
+                      </ion-grid>
+                    </ng-container>
+          
+                    <ng-container *ngIf="wallet == undefined || wallet.transaction == undefined || wallet.transaction.length == 0">
+                      <ion-label>Non ci sono transazioni</ion-label>
+                    </ng-container>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
       </div>
     
-      <div class="home-section section-buttons-others">
-    
-        <ion-grid class="home-second-row">
-          <ion-row> -->
-          <!--   <ion-col col-3>
-                <div block class="square" (click)="goToProductList()">
-                  <ion-icon class="icon-view-offers" name="ios-document"></ion-icon>
-                  <h3>Lista</h3>
-                  <h3>Prodotti</h3>
-                </div>        
-            </ion-col>        
-            <ion-col col-3>
-                <div block class="square" (click)="goToContattiCRM()">
-                  <ion-icon class="icon-view-requests" name="ios-bookmarks"></ion-icon>
-                  <h3>Pag 4</h3>
-                  <h3>&nbsp;</h3>
-                </div>                  
-            </ion-col>
-     -->
-        </ion-row>
-      </ion-grid>
-
-    </div>
-
-  </div>
-
-  <!-- <div class="hr-style "></div> -->
-  <div class="section-products">
-    <ion-grid>
-      <ion-row>
-        <ion-item>
-          <ion-col item-content col-12>
-            <h3>Lista di tutte le transazioni</h3>
-          <!--   <ion-card>
-
-              <ion-card-header>
-                Totale
-              </ion-card-header>
-
-              <ion-card-content>
-                {{wallet.credit}}
-              </ion-card-content>
-
-            </ion-card> -->
-          </ion-col>
-        </ion-item>
-      </ion-row>
-      <ion-row>
-        <ion-item>
-
-          <ion-col item-content col-12>
-
-          <!--   <form (ngSubmit)="searchItem()" [ngClass]="{'disabled-content': loading==true}">
-              <ion-grid>
-                <ion-row responsive-sm align-items-center>
-                  <ion-col col-lg-9 col-md-9 col-sm-9 col-9>
-                    <ion-row>
-                      <ion-col>
+      <div [class.hide]="section != 'recycle'">
+          <ion-grid>
+              <ion-row>
+                <ion-col offset-md-3 col-md-6 col-12>
+                  <div class="section-products">
+                    <ion-grid>
+                      <ion-row>
                         <ion-item>
-                          <ion-input type="text" name="search" placeholder="Filtra transazione" [(ngModel)]="search"
-                            clearInput></ion-input>
+                          <ion-col item-content col-12>
+                            <h3>Lista di tutte le transazioni</h3>
+                          </ion-col>
                         </ion-item>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-item no-lines>
-                        <ion-col item-content>
-                          <ion-select [(ngModel)]="transaction" name="transaction" class="filter-select select-padding"
-                            interface="alert">
-                            <ion-label>Scegli Categoria</ion-label>
-                            <ion-option value="all" selected="true">Tutte le transazioni</ion-option>
-                            <ion-option value="plus">Prodotti riciclati</ion-option>
-                            <ion-option value="minus">Acquisti</ion-option>
-                          </ion-select>
-                        </ion-col>
-                      </ion-item>
-                    </ion-row>
-                  </ion-col>
-                  <ion-col col-lg-2 offset-lg-1 col-md-2 offset-md-1 col-sm-2 offset-sm-1 col-2 offset-1 class="list-filter-control">
-                    <button type="submit" ion-button clear block>
-                      <ion-icon name="search" class="large-icon"></ion-icon>
-                    </button>
-                    <button type="button" ion-button (click)="clearSearchText()" clear block>
-                      <ion-icon name="close" class="large-icon"></ion-icon>
-                    </button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </form> -->
-          </ion-col>
-        </ion-item>
+                      </ion-row>
+                    </ion-grid>
+          
+          
+          
+                    <ng-container *ngIf="recwallet != undefined && recwallet.transaction != undefined && recwallet.transaction.length > 0">
+                      <ion-grid>
+                        <ion-row responsive-sm *ngFor="let t of recwallet.transaction">
+                          <ion-item>
+                            <ion-col item-content col-1>
+                              <ion-icon *ngIf="t.trash_token != null" name="ios-trash"></ion-icon>
+                              <ion-icon *ngIf="t.trash_token == null" name="md-cart"></ion-icon>
+                            </ion-col>
+                            <ion-col text-wrap item-content col-5>
+                              <ion-label>{{t.wcn}}</ion-label>
+                            </ion-col>
+                            <ion-col item-content col-4>
+                              <ion-label class="positive" *ngIf="t.trash_token != null">+ {{t.credit}} </ion-label>
+                              <ion-label class="negative" *ngIf="t.trash_token == null">- {{t.credit}} </ion-label>
+                            </ion-col>
+                            <ion-col item-content col-2>
+                              <ion-icon *ngIf="t.trash_token != null" class="larger" (click)="goToDetail(t.product_id,true)" name="ios-arrow-dropright-circle-outline"></ion-icon>
+                              <ion-icon *ngIf="t.trash_token == null" class="larger" (click)="goToDetail(t.product_id,false)"
+                                name="ios-arrow-dropright-circle-outline"></ion-icon>
+                            </ion-col>
+                          </ion-item>
+                        </ion-row>
+                      </ion-grid>
+                    </ng-container>
+          
+                    <ng-container *ngIf="recwallet == undefined || recwallet.transaction == undefined || recwallet.transaction.length == 0">
+                      <ion-label>Non ci sono transazioni</ion-label>
+                    </ng-container>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+      </div>
+    
+      <div [class.hide]="section != 'upcycle'">
+          <ion-grid>
+              <ion-row>
+                <ion-col offset-md-3 col-md-6 col-12>
+                  <div class="section-products">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-item>
+                          <ion-col item-content col-12>
+                            <h3>Lista di tutte le transazioni</h3>
+                          </ion-col>
+                        </ion-item>
+                      </ion-row>
+                    </ion-grid>
+          
+          
+          
+                    <ng-container *ngIf="upwallet != undefined && upwallet.transaction != undefined && upwallet.transaction.length > 0">
+                      <ion-grid>
+                        <ion-row responsive-sm *ngFor="let t of upwallet.transaction">
+                          <ion-item>
+                            <ion-col item-content col-1>
+                              <ion-icon *ngIf="t.trash_token != null" name="ios-trash"></ion-icon>
+                              <ion-icon *ngIf="t.trash_token == null" name="md-cart"></ion-icon>
+                            </ion-col>
+                            <ion-col text-wrap item-content col-5>
+                              <ion-label>{{t.wcn}}</ion-label>
+                            </ion-col>
+                            <ion-col item-content col-4>
+                              <ion-label class="positive" *ngIf="t.trash_token != null">+ {{t.credit}} </ion-label>
+                              <ion-label class="negative" *ngIf="t.trash_token == null">- {{t.credit}} </ion-label>
+                            </ion-col>
+                            <ion-col item-content col-2>
+                              <ion-icon *ngIf="t.trash_token != null" class="larger" (click)="goToDetail(t.product_id,true)" name="ios-arrow-dropright-circle-outline"></ion-icon>
+                              <ion-icon *ngIf="t.trash_token == null" class="larger" (click)="goToDetail(t.product_id,false)"
+                                name="ios-arrow-dropright-circle-outline"></ion-icon>
+                            </ion-col>
+                          </ion-item>
+                        </ion-row>
+                      </ion-grid>
+                    </ng-container>
+          
+                    <ng-container *ngIf="upwallet == undefined || upwallet.transaction == undefined || upwallet.transaction.length == 0">
+                      <ion-label>Non ci sono transazioni</ion-label>
+                    </ng-container>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+      </div>
 
-      </ion-row>
-    </ion-grid>
-
-
-
-    <ng-container *ngIf="wallet != undefined && wallet.transaction != undefined && wallet.transaction.length > 0">
-      <ion-grid>
-        <ion-row responsive-sm *ngFor="let t of wallet.transaction">
-          <ion-item>
-            <ion-col item-content>
-              <ion-icon *ngIf="t.trash_token != null" name="ios-trash"></ion-icon>
-              <ion-icon *ngIf="t.trash_token == null" name="md-cart"></ion-icon>
-            </ion-col>
-            <ion-col item-content>
-              <ion-label>{{t.wcn}}</ion-label>
-            </ion-col>
-            <ion-col item-content>
-              <ion-label class="positive" *ngIf="t.trash_token != null">+ {{t.credit}} </ion-label>
-              <ion-label class="negative" *ngIf="t.trash_token == null">- {{t.credit}} </ion-label>
-            </ion-col>
-            <ion-col item-content>
-              <ion-icon *ngIf="t.trash_token != null" (click)="goToDetail(t.product_id,true)" name="md-play"></ion-icon>
-              <ion-icon *ngIf="t.trash_token == null" (click)="goToDetail(t.product_id,false)" name="md-play"></ion-icon>
-            </ion-col>
-          </ion-item>
-        </ion-row>
-      </ion-grid>
-    </ng-container>
-
-    <ng-container *ngIf="wallet == undefined || wallet.transaction == undefined || wallet.transaction.length == 0">
-      <ion-label>Non ci sono transazioni</ion-label>
-    </ng-container>
-  </div>
 
 </ion-content>
